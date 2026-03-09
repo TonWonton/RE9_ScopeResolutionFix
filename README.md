@@ -8,13 +8,15 @@ Scope resolution fix for RE9. Makes the scope render at full resolution and also
 
 ## Prerequisites
 - REFramework and the REFramework C# API (csharp-api) https://github.com/praydog/REFramework-nightly/releases
-- .NET 10.0 Desktop Runtime https://dotnet.microsoft.com/en-us/download/dotnet/10.0
+- .NET 10.0 Desktop Runtime (if you don't already have it installed) https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 
 ## Installation
-1. Install prerequisites (download BOTH the `RE9.zip` AND `csharp-api` and extract to game folder) and install the .NET 10.0 Desktop Runtime if you don't have it installed
+1. Install prerequisites
+  - REFramework: Download BOTH the `RE9.zip` AND `csharp-api` and extract to game folder
+  - .NET 10.0: If you don't know which version to get it is most likely .NET 10.0 Desktop Runtime x64
 2. Download the plugin and extract to game folder
 3. The first startup after installing the `csharp-api` might take a while. Wait until it is complete. When the game isn't frozen anymore and it says "setting up script watcher" it is done
-4. Open the REFramework UI -> `REFramework.NET script generated UI` -> RE9_ScopeResolutionFix -> change FOV and settings
+4. Open the REFramework UI -> `REFramework.NET script generated UI` -> RE9_ScopeResolutionFix. If the mod appears there it is installed correctly
 
 ## Features
 - Scope is rendered at full quality/resolution
