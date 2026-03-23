@@ -21,7 +21,7 @@ namespace RE9_ScopeResolutionFix
 		public const string COMPANY = "https://github.com/TonWonton/RE9_ScopeResolutionFix";
 
 		public const string GUID = "RE9_ScopeResolutionFix";
-		public const string VERSION = "1.0.0";
+		public const string VERSION = "1.0.1";
 
 		public const string GUID_AND_V_VERSION = GUID + " v" + VERSION;
 
@@ -112,15 +112,19 @@ namespace RE9_ScopeResolutionFix
 				ADSCameraController.ADSZoomData? adsZoomData = _adsCameraController.CurrentZoomData;
 				if (adsZoomData != null)
 				{
-					int zoomStepsCount = adsZoomData._ZoomSteps.Count;
-					for (int i = 0; i < zoomStepsCount; i++)
+					var zoomSteps = adsZoomData._ZoomSteps;
+					if (zoomSteps != null)
 					{
-						ADSCameraZoomData_Base.ZoomStepData zoomStepData = adsZoomData._ZoomSteps[i];
-						if (zoomStepData != null)
+						int zoomStepsLength = zoomSteps.Length;
+						for (int i = 0; i < zoomStepsLength; i++)
 						{
-							if (TryGetOriginalFOVFromZoomStepData(zoomStepData, out float originalFOV))
+							ADSCameraZoomData_Base.ZoomStepData zoomStepData = zoomSteps[i];
+							if (zoomStepData != null)
 							{
-								zoomStepData._ZoomFov = GetScopeFOV(originalFOV, i);
+								if (TryGetOriginalFOVFromZoomStepData(zoomStepData, out float originalFOV))
+								{
+									zoomStepData._ZoomFov = GetScopeFOV(originalFOV, i);
+								}
 							}
 						}
 					}
@@ -185,7 +189,7 @@ namespace RE9_ScopeResolutionFix
 				//Scope
 				ImGui.Text("SCOPE");
 				ImGui.Separator();
-				_scopeBaseZoomMultiplier.DrawDragFloat(0.01f, 0f, 10f); _scopeBaseZoomMultiplier.DrawResetButtonSameLine(ref labelNr);
+				_scopeBaseZoomMultiplier.DrawDragFloat(0.01f, 0f, 100f); _scopeBaseZoomMultiplier.DrawResetButtonSameLine(ref labelNr);
 
 				//End
 				ImGui.TreePop();

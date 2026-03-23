@@ -26,3 +26,7 @@ Scope resolution fix for RE9. Makes the scope render at full resolution and also
 ## Changelog
 ### v1.0.0
 - Initial release
+
+### v1.0.1
+- Add lua version
+- Minor optimizations
